@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="gunn.brewski.app" >
+
+    <!-- This permission is necessary in order for Brewski to perform network access. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Include following permission if you want to cache images on SD card -->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+
+    <!-- Permissions required by the sync adapter -->
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/BrewskiTheme"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DashboardActivity"
+            android:theme="@style/BrewskiTheme"
+            android:label="@string/title_activity_dashboard" >
+        </activity>
+        <activity
+            android:name=".BreweryListActivity"
+            android:label="@string/title_activity_brewery_list"
+            android:parentActivityName=".DashboardActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gunn.brewski.app.DashboardActivity" />
+        </activity>
+        <activity
+            android:name=".BeerListActivity"
+            android:label="@string/title_activity_beer_list"
+            android:parentActivityName=".DashboardActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gunn.brewski.app.DashboardActivity" />
+        </activity>
+        <activity
+            android:name=".StyleListActivity"
+            android:label="@string/title_activity_style_list"
+            android:parentActivityName=".DashboardActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gunn.brewski.app.DashboardActivity" />
+        </activity>
+        <activity
+            android:name=".LoadingScreenActivity"
+            android:label="@string/title_activity_loading_screen" >
+        </activity>
+        <activity
+            android:name=".BeerDetailActivity"
+            android:label="@string/title_activity_beer_detail"
+            android:parentActivityName=".BeerListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gunn.brewski.app.BeerListActivity" />
+        </activity>
+        <activity
+            android:name=".BreweryDetailActivity"
+            android:label="@string/title_activity_brewery_detail"
+            android:parentActivityName=".BreweryListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gunn.brewski.app.BreweryListActivity" />
+        </activity>
+        <activity
+            android:name=".StyleDetailActivity"
+            android:label="@string/title_activity_style_detail"
+            android:parentActivityName=".StyleListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gunn.brewski.app.StyleListActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings"
+            android:parentActivityName=".DashboardActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gunn.brewski.app.DashboardActivity" />
+        </activity>
+
+        <provider
+            android:name=".data.BrewskiContentProvider"
+            android:authorities="@string/content_authority"
+            android:exported="false"
+            android:syncable="true" />
+
+        <!-- SyncAdapter's dummy authentication service -->
+        <service android:name=".sync.BrewskiAuthenticatorService" >
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <!-- The SyncAdapter service -->
+        <service
+            android:name=".sync.BrewskiSyncService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+    </application>
+</manifest>

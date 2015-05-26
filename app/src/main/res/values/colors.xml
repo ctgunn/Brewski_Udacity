@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="brewski_dark_grey">#242424</color>
+    <color name="brewski_middle_grey">#444444</color>
+    <color name="brewski_light_grey">#a9a9a9</color>
+    <color name="brewski_yellow">#f9e84e</color>
+</resources>
