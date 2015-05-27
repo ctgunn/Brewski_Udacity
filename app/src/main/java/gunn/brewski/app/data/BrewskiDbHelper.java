@@ -53,7 +53,7 @@ public class BrewskiDbHelper extends SQLiteOpenHelper {
                 StyleEntry.COLUMN_STYLE_ID + " TEXT UNIQUE, " +
                 StyleEntry.COLUMN_STYLE_NAME + " TEXT, " +
                 StyleEntry.COLUMN_STYLE_SHORT_NAME + " TEXT, " +
-                StyleEntry.COLUMN_STYLE_DESCRIPTION + " TEXT, " +
+                StyleEntry.COLUMN_STYLE_DESCRIPTION + " TEXT " +
                 " );";
 
         sqLiteDatabase.execSQL(SQL_CREATE_BEER_TABLE);
