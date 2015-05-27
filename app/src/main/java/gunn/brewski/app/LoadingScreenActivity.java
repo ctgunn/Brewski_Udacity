@@ -16,8 +16,6 @@ public class LoadingScreenActivity extends FragmentActivity {
     private final String LOG_TAG = LoadingScreenActivity.class.getSimpleName();
 
     public static final String DASHBOARD = "dashboard";
-    public static final String PROFILE = "profile";
-    public static final String CATEGORIES = "categories";
     public static final String STYLES = "styles";
     public static final String BEERS = "beers";
     public static final String BREWERIES = "breweries";
@@ -104,10 +102,6 @@ public class LoadingScreenActivity extends FragmentActivity {
                 Intent dashboardIntent = new Intent(LoadingScreenActivity.this, DashboardActivity.class);
                 startActivity(dashboardIntent);
             }
-            else if(PROFILE.equals(screenLoading)) {
-                Intent profileIntent = new Intent(LoadingScreenActivity.this, ProfileActivity.class);
-                startActivity(profileIntent);
-            }
             else if(STYLES.equals(screenLoading)) {
                 Intent styleIntent = new Intent(LoadingScreenActivity.this, StyleListActivity.class);
                 startActivity(styleIntent);
@@ -133,16 +127,16 @@ public class LoadingScreenActivity extends FragmentActivity {
             // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage("The screen you are attempting to access does not exist.")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
             // Create the AlertDialog object and return it
             return builder.create();
         }

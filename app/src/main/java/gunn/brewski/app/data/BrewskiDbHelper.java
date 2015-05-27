@@ -4,12 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import gunn.brewski.app.data.BrewskiContract.ProfileEntry;
-import gunn.brewski.app.data.BrewskiContract.CategoryEntry;
 import gunn.brewski.app.data.BrewskiContract.BeerEntry;
 import gunn.brewski.app.data.BrewskiContract.BreweryEntry;
 import gunn.brewski.app.data.BrewskiContract.StyleEntry;
-import gunn.brewski.app.data.BrewskiContract.XAnalysisEntry;
 
 /**
  * Created by SESA300553 on 4/2/2015.
@@ -33,7 +30,6 @@ public class BrewskiDbHelper extends SQLiteOpenHelper {
                 BeerEntry.COLUMN_BEER_NAME + " TEXT, " +
                 BeerEntry.COLUMN_BEER_DESCRIPTION + " TEXT, " +
                 BeerEntry.COLUMN_BREWERY_ID + " TEXT, " +
-                BeerEntry.COLUMN_CATEGORY_ID + " TEXT, " +
                 BeerEntry.COLUMN_STYLE_ID + " TEXT, " +
                 BeerEntry.COLUMN_LABEL_LARGE + " TEXT, " +
                 BeerEntry.COLUMN_LABEL_MEDIUM + " TEXT, " +
@@ -58,7 +54,6 @@ public class BrewskiDbHelper extends SQLiteOpenHelper {
                 StyleEntry.COLUMN_STYLE_NAME + " TEXT, " +
                 StyleEntry.COLUMN_STYLE_SHORT_NAME + " TEXT, " +
                 StyleEntry.COLUMN_STYLE_DESCRIPTION + " TEXT, " +
-                StyleEntry.COLUMN_CATEGORY_ID + " TEXT " +
                 " );";
 
         sqLiteDatabase.execSQL(SQL_CREATE_BEER_TABLE);
