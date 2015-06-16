@@ -26,7 +26,7 @@ public class BrewskiDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         final String SQL_CREATE_BEER_TABLE = "CREATE TABLE " + BeerEntry.TABLE_NAME + " (" +
                 BeerEntry._ID + " INTEGER PRIMARY KEY," +
-                BeerEntry.COLUMN_BEER_ID + " TEXT UNIQUE, " +
+                BeerEntry.COLUMN_BEER_ID + " TEXT, " +
                 BeerEntry.COLUMN_BEER_NAME + " TEXT, " +
                 BeerEntry.COLUMN_BEER_DESCRIPTION + " TEXT, " +
                 BeerEntry.COLUMN_BREWERY_ID + " TEXT, " +
@@ -38,7 +38,7 @@ public class BrewskiDbHelper extends SQLiteOpenHelper {
 
         final String SQL_CREATE_BREWERY_TABLE = "CREATE TABLE " + BreweryEntry.TABLE_NAME + " (" +
                 BreweryEntry._ID + " INTEGER PRIMARY KEY," +
-                BreweryEntry.COLUMN_BREWERY_ID + " TEXT UNIQUE, " +
+                BreweryEntry.COLUMN_BREWERY_ID + " TEXT, " +
                 BreweryEntry.COLUMN_BREWERY_NAME + " TEXT, " +
                 BreweryEntry.COLUMN_BREWERY_DESCRIPTION + " TEXT, " +
                 BreweryEntry.COLUMN_BREWERY_WEBSITE + " TEXT, " +
@@ -50,7 +50,7 @@ public class BrewskiDbHelper extends SQLiteOpenHelper {
 
         final String SQL_CREATE_STYLE_TABLE = "CREATE TABLE " + StyleEntry.TABLE_NAME + " (" +
                 StyleEntry._ID + " INTEGER PRIMARY KEY," +
-                StyleEntry.COLUMN_STYLE_ID + " TEXT UNIQUE, " +
+                StyleEntry.COLUMN_STYLE_ID + " TEXT, " +
                 StyleEntry.COLUMN_STYLE_NAME + " TEXT, " +
                 StyleEntry.COLUMN_STYLE_SHORT_NAME + " TEXT, " +
                 StyleEntry.COLUMN_STYLE_DESCRIPTION + " TEXT " +

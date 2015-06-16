@@ -37,10 +37,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Vector;
 
 import gunn.brewski.app.BrewskiApplication;
 import gunn.brewski.app.R;
+import gunn.brewski.app.data.BrewskiContentProvider;
 import gunn.brewski.app.data.BrewskiContract;
 
 /**
@@ -416,6 +419,10 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
         // Beer information.  Each beer's info is an element of the "list" array.
         final String BDB_DATA = "data";
 
+        ArrayList<String> beerIdList = new ArrayList<>();
+        ArrayList<String> breweryIdList = new ArrayList<>();
+        ArrayList<String> styleIdList = new ArrayList<>();
+
         try {
             JSONObject beerJson = new JSONObject(beerJsonStr);
             String numberOfPages = beerJson.getString(BDB_NUMBER_OF_PAGES);
@@ -424,9 +431,9 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
             BrewskiApplication.setNumberOfBeerPages(Integer.parseInt(numberOfPages));
 
             // Insert the new beer information into the database
-            Vector<ContentValues> beerContentValuesVector = new Vector<ContentValues>(beerArray.length());
-            Vector<ContentValues> breweryContentValuesVector = new Vector<ContentValues>(beerArray.length());
-            Vector<ContentValues> styleContentValuesVector = new Vector<ContentValues>(beerArray.length());
+            Vector<ContentValues> beerContentValuesVector = new Vector<>(beerArray.length());
+            Vector<ContentValues> breweryContentValuesVector = new Vector<>(beerArray.length());
+            Vector<ContentValues> styleContentValuesVector = new Vector<>(beerArray.length());
 
             for(int i = 0; i < beerArray.length(); i++) {
                 // These are the values that will be collected.
@@ -562,9 +569,20 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
                 styleValues.put(BrewskiContract.StyleEntry.COLUMN_STYLE_SHORT_NAME, styleShortName);
                 styleValues.put(BrewskiContract.StyleEntry.COLUMN_STYLE_DESCRIPTION, styleDescription);
 
-                beerContentValuesVector.add(beerValues);
-                breweryContentValuesVector.add(breweryValues);
-                styleContentValuesVector.add(styleValues);
+                if(!existsInDb("beer", beerId) && !alreadyAddedToTheList(beerIdList, beerId)) {
+                    beerIdList.add(beerId);
+                    beerContentValuesVector.add(beerValues);
+                }
+
+                if(!existsInDb("brewery", breweryId) && !alreadyAddedToTheList(breweryIdList, breweryId)) {
+                    breweryIdList.add(breweryId);
+                    breweryContentValuesVector.add(breweryValues);
+                }
+
+                if(!existsInDb("style", styleId) && !alreadyAddedToTheList(styleIdList, styleId)) {
+                    styleIdList.add(styleId);
+                    styleContentValuesVector.add(styleValues);
+                }
             }
 
             // add to database
@@ -619,6 +637,8 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
         // Beer information.  Each beer's info is an element of the "list" array.
         final String BDB_DATA = "data";
 
+        ArrayList<String> breweryIdList = new ArrayList<>();
+
         try {
             JSONObject breweryJson = new JSONObject(breweryJsonStr);
             String numberOfPages = breweryJson.getString(BDB_NUMBER_OF_PAGES);
@@ -627,7 +647,7 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
             BrewskiApplication.setNumberOfBreweryPages(Integer.parseInt(numberOfPages));
 
             // Insert the new beer information into the database
-            Vector<ContentValues> breweryContentValuesVector = new Vector<ContentValues>(breweryArray.length());
+            Vector<ContentValues> breweryContentValuesVector = new Vector<>(breweryArray.length());
 
             for(int i = 0; i < breweryArray.length(); i++) {
                 // These are the values that will be collected.
@@ -690,7 +710,10 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
                 breweryValues.put(BrewskiContract.BreweryEntry.COLUMN_IMAGE_MEDIUM, breweryImageMedium);
                 breweryValues.put(BrewskiContract.BreweryEntry.COLUMN_IMAGE_ICON, breweryImageIcon);
 
-                breweryContentValuesVector.add(breweryValues);
+                if(!existsInDb("brewery", breweryId) && !alreadyAddedToTheList(breweryIdList, breweryId)) {
+                    breweryIdList.add(breweryId);
+                    breweryContentValuesVector.add(breweryValues);
+                }
             }
 
             // add to database
@@ -700,7 +723,7 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
                 getContext().getContentResolver().bulkInsert(BrewskiContract.BreweryEntry.BREWERY_CONTENT_URI, breweryContentValuesArray);
             }
 
-            Log.d(LOG_TAG, "Sync Complete. " + breweryContentValuesVector.size() + "Breweries Inserted");
+            Log.d(LOG_TAG, "Sync Complete. " + breweryContentValuesVector.size() + " Breweries Inserted");
         }
         catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
@@ -714,6 +737,7 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
         final String BDB_STYLE_NAME = "name";
         final String BDB_STYLE_SHORT_NAME = "shortName";
         final String BDB_STYLE_DESCRIPTION = "description";
+        ArrayList<String> styleIdList = new ArrayList<>();
 
         // Beer information.  Each beer's info is an element of the "list" array.
         final String BDB_DATA = "data";
@@ -723,7 +747,7 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
             JSONArray styleArray = styleJson.getJSONArray(BDB_DATA);
 
             // Insert the new beer information into the database
-            Vector<ContentValues> styleContentValuesVector = new Vector<ContentValues>(styleArray.length());
+            Vector<ContentValues> styleContentValuesVector = new Vector<>(styleArray.length());
 
             for(int i = 0; i < styleArray.length(); i++) {
                 // These are the values that will be collected.
@@ -759,7 +783,10 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
                 styleValues.put(BrewskiContract.StyleEntry.COLUMN_STYLE_SHORT_NAME, styleShortName);
                 styleValues.put(BrewskiContract.StyleEntry.COLUMN_STYLE_DESCRIPTION, styleDescription);
 
-                styleContentValuesVector.add(styleValues);
+                if(!existsInDb("style", styleId) && !alreadyAddedToTheList(styleIdList, styleId)) {
+                    styleIdList.add(styleId);
+                    styleContentValuesVector.add(styleValues);
+                }
             }
 
             // add to database
@@ -769,7 +796,7 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
                 getContext().getContentResolver().bulkInsert(BrewskiContract.StyleEntry.STYLE_CONTENT_URI, styleContentValuesArray);
             }
 
-            Log.d(LOG_TAG, "Sync Complete. " + styleContentValuesVector.size() + "Styles Inserted");
+            Log.d(LOG_TAG, "Sync Complete. " + styleContentValuesVector.size() + " Styles Inserted");
         }
         catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
@@ -867,5 +894,33 @@ public class BrewskiSyncAdapter extends AbstractThreadedSyncAdapter {
 
     public static void initializeSyncAdapter(Context context) {
         getSyncAccount(context);
+    }
+
+    private boolean existsInDb(String type, String id) {
+        Cursor cursor = null;
+
+        try {
+            cursor = BrewskiContentProvider.mOpenHelper.getReadableDatabase().rawQuery("SELECT " + type + "_id FROM " + type + " WHERE " + type + "_id=\"" + id + "\"", null);
+
+            int count = cursor.getCount();
+
+            if (cursor.getCount() > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return false;
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        return false;
+    }
+
+    private boolean alreadyAddedToTheList(ArrayList<String> list, String id) {
+        return list.contains(id);
     }
 }

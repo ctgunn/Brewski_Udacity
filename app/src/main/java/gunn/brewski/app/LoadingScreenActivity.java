@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 
 public class LoadingScreenActivity extends FragmentActivity {
     private final String LOG_TAG = LoadingScreenActivity.class.getSimpleName();
@@ -26,6 +27,7 @@ public class LoadingScreenActivity extends FragmentActivity {
 
     //A ProgressDialog object
     private ProgressDialog progressDialog;
+    private AsyncTask<Void, Integer, Void> task;
 
     /** Called when the activity is first created. */
     @Override
@@ -35,8 +37,30 @@ public class LoadingScreenActivity extends FragmentActivity {
         screenLoading = getIntent().getStringExtra(SCREEN_LOADING);
 
         //Initialize a LoadViewTask object and call the execute() method
-        new LoadViewTask().execute();
+        task = new LoadViewTask();
+        task.execute();
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            progressDialog.dismiss();
+
+            task.cancel(true);
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        progressDialog.dismiss();
+
+        task.cancel(true);
+
+        super.onBackPressed();
     }
 
     //To use the AsyncTask, it must be subclassed
@@ -66,7 +90,7 @@ public class LoadingScreenActivity extends FragmentActivity {
                     //While the counter is smaller than four
                     while(counter <= 4) {
                         //Wait 850 milliseconds
-                        this.wait(250);
+                        this.wait(850);
 
                         //Increment the counter
                         counter++;
@@ -118,6 +142,12 @@ public class LoadingScreenActivity extends FragmentActivity {
                 DialogFragment noScreenDialog = new ScreenDoesNotExistDialogFragment();
                 noScreenDialog.show(getSupportFragmentManager(), NO_SCREEN);
             }
+        }
+
+        @Override
+        protected void onCancelled() {
+            Intent dashboardIntent = new Intent(LoadingScreenActivity.this, DashboardActivity.class);
+            startActivity(dashboardIntent);
         }
     }
 

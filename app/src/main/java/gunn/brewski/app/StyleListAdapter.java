@@ -3,6 +3,7 @@ package gunn.brewski.app;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,7 +84,7 @@ public class StyleListAdapter extends CursorAdapter {
             styleDescription = cursor.getString(StyleListFragment.COL_STYLE_DESCRIPTION);
         }
 
-        if(styleDescription.length() > 100) {
+        if(!TextUtils.isEmpty(styleDescription) && styleDescription.length() > 100) {
             styleDescription = styleDescription.substring(0, 100) + "...";
         }
 

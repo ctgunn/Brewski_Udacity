@@ -3,6 +3,7 @@ package gunn.brewski.app;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,7 +88,7 @@ public class BreweryListAdapter extends CursorAdapter {
             breweryDescription = cursor.getString(BreweryListFragment.COL_BREWERY_DESCRIPTION);
         }
 
-        if(breweryDescription.length() > 100) {
+        if(!TextUtils.isEmpty(breweryDescription) && breweryDescription.length() > 100) {
             breweryDescription = breweryDescription.substring(0, 100) + "...";
         }
 
