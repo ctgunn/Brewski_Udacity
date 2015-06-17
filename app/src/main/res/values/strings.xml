@@ -90,7 +90,7 @@
     <string name="pref_title_vibrate">Vibrate</string>
 
     <!-- SyncAdapter related -->
-    <string name="sync_account_type">brewski.gunn</string>
+    <string name="sync_account_type">brewski.gunn.account</string>
     <string name="content_authority">gunn.brewski.app</string>
 
     <!-- Notification Format -->

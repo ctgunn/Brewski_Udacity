@@ -90,7 +90,7 @@ public class LoadingScreenActivity extends FragmentActivity {
                     //While the counter is smaller than four
                     while(counter <= 4) {
                         //Wait 850 milliseconds
-                        this.wait(850);
+                        this.wait(250);
 
                         //Increment the counter
                         counter++;

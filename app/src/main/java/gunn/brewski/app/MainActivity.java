@@ -1,7 +1,5 @@
 package gunn.brewski.app;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
