@@ -32,34 +32,33 @@ public class DashboardActivity extends ActionBarActivity {
         btn_categories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLoadingScreen(btn_categories.getText().toString().toLowerCase());
+                Intent styleIntent = new Intent(DashboardActivity.this, StyleListActivity.class);
+                startActivity(styleIntent);
             }
         });
 
         btn_beers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLoadingScreen(btn_beers.getText().toString().toLowerCase());
+                Intent beerIntent = new Intent(DashboardActivity.this, BeerListActivity.class);
+                startActivity(beerIntent);
             }
         });
 
         btn_breweries.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLoadingScreen(btn_breweries.getText().toString().toLowerCase());
+                Intent breweryIntent = new Intent(DashboardActivity.this, BreweryListActivity.class);
+                startActivity(breweryIntent);
             }
         });
     }
 
-    public void showLoadingScreen(String buttonText) {
-        Intent loadingScreenIntent = new Intent(getApplicationContext(), LoadingScreenActivity.class);
-        loadingScreenIntent.putExtra("screenLoading", buttonText);
-        startActivity(loadingScreenIntent);
-    }
-
     @Override
     public void onBackPressed() {
-        return;
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
     }
-
 }

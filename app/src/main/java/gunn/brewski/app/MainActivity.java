@@ -26,9 +26,8 @@ public class MainActivity extends ActionBarActivity {
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
         ImageLoader.getInstance().init(config);
 
-        Intent loadingScreenIntent = new Intent(this, LoadingScreenActivity.class);
-        loadingScreenIntent.putExtra("screenLoading", "dashboard");
-        startActivity(loadingScreenIntent);
+        Intent dashboardIntent = new Intent(this, DashboardActivity.class);
+        startActivity(dashboardIntent);
 
         BrewskiSyncAdapter.initializeSyncAdapter(this);
     }
