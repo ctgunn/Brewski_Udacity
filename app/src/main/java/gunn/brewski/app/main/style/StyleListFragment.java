@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.style;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,20 +11,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.ShareActionProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 
+import gunn.brewski.app.R;
 import gunn.brewski.app.data.BrewskiContract;
+import gunn.brewski.app.main.BrewskiApplication;
 import gunn.brewski.app.sync.BrewskiSyncAdapter;
 
 public class StyleListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {

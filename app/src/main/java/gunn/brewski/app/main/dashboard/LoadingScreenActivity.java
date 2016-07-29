@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.dashboard;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,8 +10,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.KeyEvent;
+
+import gunn.brewski.app.main.BrewskiApplication;
+import gunn.brewski.app.main.beer.BeerListActivity;
+import gunn.brewski.app.main.brewery.BreweryListActivity;
+import gunn.brewski.app.main.style.StyleListActivity;
 
 public class LoadingScreenActivity extends FragmentActivity {
     private final String LOG_TAG = LoadingScreenActivity.class.getSimpleName();

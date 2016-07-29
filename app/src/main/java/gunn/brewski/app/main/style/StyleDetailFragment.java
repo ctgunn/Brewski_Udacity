@@ -1,10 +1,9 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.style;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -18,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import gunn.brewski.app.R;
 import gunn.brewski.app.data.BrewskiContract.StyleEntry;
 
 public class StyleDetailFragment extends android.support.v4.app.Fragment implements LoaderManager.LoaderCallbacks<Cursor> {

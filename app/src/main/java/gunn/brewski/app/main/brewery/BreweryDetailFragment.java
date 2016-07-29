@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.brewery;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import gunn.brewski.app.R;
 import gunn.brewski.app.data.BrewskiContract.BreweryEntry;
 
 /**

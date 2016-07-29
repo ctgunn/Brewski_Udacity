@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.beer;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -6,6 +6,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import gunn.brewski.app.R;
+import gunn.brewski.app.main.dashboard.DashboardActivity;
+import gunn.brewski.app.main.settings.SettingsActivity;
 
 
 public class BeerListActivity extends ActionBarActivity implements BeerListFragment.Callback {

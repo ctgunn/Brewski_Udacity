@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.dashboard;
 
 import android.content.Context;
 import android.util.AttributeSet;

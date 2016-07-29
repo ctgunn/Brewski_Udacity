@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.beer;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -12,14 +12,7 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-
-import java.io.IOException;
-import java.net.URL;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
+import gunn.brewski.app.R;
 
 /**
  * Created by SESA300553 on 4/2/2015.

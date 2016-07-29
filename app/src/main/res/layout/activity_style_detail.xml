@@ -3,5 +3,5 @@
     android:id="@+id/style_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="gunn.brewski.app.StyleDetailActivity"
+    tools:context=".main.style.StyleDetailActivity"
     tools:ignore="MergeRootFrame" />

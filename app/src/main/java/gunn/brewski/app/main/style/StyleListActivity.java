@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.style;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,11 +7,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import gunn.brewski.app.R;
+import gunn.brewski.app.main.dashboard.DashboardActivity;
+import gunn.brewski.app.main.settings.SettingsActivity;
 
-public class BreweryListActivity extends ActionBarActivity implements BreweryListFragment.Callback {
-    private final String LOG_TAG = BreweryListActivity.class.getSimpleName();
 
-    private static final String BREWERY_DETAIL_FRAGMENT_TAG = "BREWDFTAG";
+public class StyleListActivity extends ActionBarActivity implements StyleListFragment.Callback {
+    private final String LOG_TAG = StyleListActivity.class.getSimpleName();
+
+    private static final String STYLE_DETAIL_FRAGMENT_TAG = "STYLEDFTAG";
 
     private boolean mTwoPane;
 
@@ -19,9 +23,9 @@ public class BreweryListActivity extends ActionBarActivity implements BreweryLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_brewery_list);
+        setContentView(R.layout.activity_style_list);
 
-        if (findViewById(R.id.brewery_detail_container) != null) {
+        if (findViewById(R.id.style_detail_container) != null) {
             // The detail container view will be present only in the large-screen layouts
             // (res/layout-sw600dp). If this view is present, then the activity should be
             // in two-pane mode.
@@ -32,7 +36,7 @@ public class BreweryListActivity extends ActionBarActivity implements BreweryLis
             // fragment transaction.
             if (savedInstanceState == null) {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.brewery_detail_container, new BreweryDetailFragment(), BREWERY_DETAIL_FRAGMENT_TAG)
+                        .replace(R.id.style_detail_container, new StyleDetailFragment(), STYLE_DETAIL_FRAGMENT_TAG)
                         .commit();
             }
         } else {
@@ -40,16 +44,16 @@ public class BreweryListActivity extends ActionBarActivity implements BreweryLis
             getSupportActionBar().setElevation(0f);
         }
 
-        BreweryListFragment breweryListFragment =  ((BreweryListFragment)getSupportFragmentManager()
-                .findFragmentById(R.id.fragment_brewery_list));
-        breweryListFragment.setUseTodayLayout(!mTwoPane);
+        StyleListFragment styleListFragment =  ((StyleListFragment)getSupportFragmentManager()
+                .findFragmentById(R.id.fragment_style_list));
+        styleListFragment.setUseTodayLayout(!mTwoPane);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_brewery_list_activity, menu);
+        getMenuInflater().inflate(R.menu.menu_style_list_activity, menu);
         return true;
     }
 
@@ -73,17 +77,17 @@ public class BreweryListActivity extends ActionBarActivity implements BreweryLis
             // adding or replacing the detail fragment using a
             // fragment transaction.
             Bundle args = new Bundle();
-            args.putParcelable(BreweryDetailFragment.BREWERY_DETAIL_URI, contentUri);
+            args.putParcelable(StyleDetailFragment.STYLE_DETAIL_URI, contentUri);
 
-            BreweryDetailFragment breweryDetailFragment = new BreweryDetailFragment();
-            breweryDetailFragment.setArguments(args);
+            StyleDetailFragment styleDetailFragment = new StyleDetailFragment();
+            styleDetailFragment.setArguments(args);
 
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.brewery_detail_container, breweryDetailFragment, BREWERY_DETAIL_FRAGMENT_TAG)
+                    .replace(R.id.style_detail_container, styleDetailFragment, STYLE_DETAIL_FRAGMENT_TAG)
                     .commit();
         }
         else {
-            Intent intent = new Intent(this, BreweryDetailActivity.class).setData(contentUri);
+            Intent intent = new Intent(this, StyleDetailActivity.class).setData(contentUri);
             startActivity(intent);
         }
     }

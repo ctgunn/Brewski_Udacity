@@ -5,15 +5,15 @@
     android:baselineAligned="false"
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
-    tools:context="gunn.brewski.app.BeerListActivity">
+    tools:context=".main.beer.BeerListActivity">
 
     <fragment
         android:id="@+id/fragment_beer_list"
-        android:name="gunn.brewski.app.BeerListFragment"
+        android:name="gunn.brewski.app.main.beer.BeerListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        tools:context="gunn.brewski.app.BeerListFragment"
+        tools:context=".main.beer.BeerListFragment"
         tools:layout="@android:layout/list_content" />
 
     <FrameLayout

@@ -5,15 +5,15 @@
     android:baselineAligned="false"
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
-    tools:context="gunn.brewski.app.StyleListActivity">
+    tools:context=".main.style.StyleListActivity">
 
     <fragment
         android:id="@+id/fragment_style_list"
-        android:name="gunn.brewski.app.StyleListFragment"
+        android:name="gunn.brewski.app.main.style.StyleListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        tools:context="gunn.brewski.app.StyleListFragment"
+        tools:context=".main.style.StyleListFragment"
         tools:layout="@android:layout/list_content" />
 
     <FrameLayout

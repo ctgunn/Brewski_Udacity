@@ -1,9 +1,7 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.beer;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -23,10 +21,10 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import gunn.brewski.app.R;
 import gunn.brewski.app.data.BrewskiContentProvider;
 import gunn.brewski.app.data.BrewskiContract;
 import gunn.brewski.app.data.BrewskiContract.BeerEntry;
-import gunn.brewski.app.data.BrewskiDbHelper;
 
 /**
  * Created by SESA300553 on 4/7/2015.

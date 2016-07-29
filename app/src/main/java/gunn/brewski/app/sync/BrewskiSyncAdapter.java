@@ -30,7 +30,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import gunn.brewski.app.BrewskiApplication;
+import gunn.brewski.app.main.BrewskiApplication;
 import gunn.brewski.app.R;
 import gunn.brewski.app.data.BrewskiContentProvider;
 import gunn.brewski.app.data.BrewskiContract;

@@ -1,10 +1,13 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.brewery;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import gunn.brewski.app.R;
+import gunn.brewski.app.main.settings.SettingsActivity;
 
 public class BreweryDetailActivity extends ActionBarActivity {
 

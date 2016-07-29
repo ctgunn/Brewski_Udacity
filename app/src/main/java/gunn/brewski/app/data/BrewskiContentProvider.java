@@ -3,7 +3,6 @@ package gunn.brewski.app.data;
 import android.annotation.TargetApi;
 import android.content.ContentProvider;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
@@ -12,8 +11,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.util.Log;
 
-import gunn.brewski.app.BrewskiApplication;
-import gunn.brewski.app.MainActivity;
+import gunn.brewski.app.main.BrewskiApplication;
 
 public class BrewskiContentProvider extends ContentProvider {
     public final String LOG_TAG = BrewskiContentProvider.class.getSimpleName();

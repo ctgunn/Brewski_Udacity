@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main;
 
 import android.app.Application;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import gunn.brewski.app.R;
+import gunn.brewski.app.main.dashboard.DashboardActivity;
 import gunn.brewski.app.sync.BrewskiSyncAdapter;
 
 

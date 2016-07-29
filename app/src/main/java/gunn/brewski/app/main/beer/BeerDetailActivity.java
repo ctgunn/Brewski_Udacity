@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.beer;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -6,26 +6,29 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import gunn.brewski.app.R;
+import gunn.brewski.app.main.settings.SettingsActivity;
 
-public class StyleDetailActivity extends ActionBarActivity {
+
+public class BeerDetailActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_style_detail);
+        setContentView(R.layout.activity_beer_detail);
 
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
 
             Bundle arguments = new Bundle();
-            arguments.putParcelable(StyleDetailFragment.STYLE_DETAIL_URI, getIntent().getData());
+            arguments.putParcelable(BeerDetailFragment.BEER_DETAIL_URI, getIntent().getData());
 
-            StyleDetailFragment styleDetailFragment = new StyleDetailFragment();
-            styleDetailFragment.setArguments(arguments);
+            BeerDetailFragment beerDetailFragment = new BeerDetailFragment();
+            beerDetailFragment.setArguments(arguments);
 
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.style_detail_container, styleDetailFragment)
+                    .add(R.id.beer_detail_container, beerDetailFragment)
                     .commit();
         }
     }
@@ -33,7 +36,7 @@ public class StyleDetailActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_style_detail_activity, menu);
+        getMenuInflater().inflate(R.menu.menu_beer_detail_activity, menu);
         return true;
     }
 

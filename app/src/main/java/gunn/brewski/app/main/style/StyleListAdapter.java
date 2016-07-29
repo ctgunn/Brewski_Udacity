@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.style;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import gunn.brewski.app.R;
 
 /**
  * Created by SESA300553 on 4/26/2015.

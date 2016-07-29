@@ -1,4 +1,4 @@
-package gunn.brewski.app;
+package gunn.brewski.app.main.brewery;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import gunn.brewski.app.R;
 
 /**
  * Created by SESA300553 on 4/2/2015.

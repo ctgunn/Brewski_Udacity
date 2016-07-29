@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:theme="@style/BrewskiTheme"
             android:label="@string/title_activity_main" >
             <intent-filter>
@@ -29,69 +29,69 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DashboardActivity"
+            android:name=".main.dashboard.DashboardActivity"
             android:theme="@style/BrewskiTheme"
             android:label="@string/title_activity_dashboard" >
         </activity>
         <activity
-            android:name=".BreweryListActivity"
+            android:name=".main.brewery.BreweryListActivity"
             android:label="@string/title_activity_brewery_list"
-            android:parentActivityName=".DashboardActivity" >
+            android:parentActivityName=".main.dashboard.DashboardActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="gunn.brewski.app.DashboardActivity" />
+                android:value=".main.dashboard.DashboardActivity" />
         </activity>
         <activity
-            android:name=".BeerListActivity"
+            android:name=".main.beer.BeerListActivity"
             android:label="@string/title_activity_beer_list"
-            android:parentActivityName=".DashboardActivity" >
+            android:parentActivityName=".main.dashboard.DashboardActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="gunn.brewski.app.DashboardActivity" />
+                android:value=".main.dashboard.DashboardActivity" />
         </activity>
         <activity
-            android:name=".StyleListActivity"
+            android:name=".main.style.StyleListActivity"
             android:label="@string/title_activity_style_list"
-            android:parentActivityName=".DashboardActivity" >
+            android:parentActivityName=".main.dashboard.DashboardActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="gunn.brewski.app.DashboardActivity" />
+                android:value=".main.dashboard.DashboardActivity" />
         </activity>
         <activity
-            android:name=".LoadingScreenActivity"
+            android:name=".main.dashboard.LoadingScreenActivity"
             android:label="@string/title_activity_loading_screen" >
         </activity>
         <activity
-            android:name=".BeerDetailActivity"
+            android:name=".main.beer.BeerDetailActivity"
             android:label="@string/title_activity_beer_detail"
-            android:parentActivityName=".BeerListActivity" >
+            android:parentActivityName=".main.beer.BeerListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="gunn.brewski.app.BeerListActivity" />
+                android:value=".main.beer.BeerListActivity" />
         </activity>
         <activity
-            android:name=".BreweryDetailActivity"
+            android:name=".main.brewery.BreweryDetailActivity"
             android:label="@string/title_activity_brewery_detail"
-            android:parentActivityName=".BreweryListActivity" >
+            android:parentActivityName=".main.brewery.BreweryListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="gunn.brewski.app.BreweryListActivity" />
+                android:value=".main.brewery.BreweryListActivity" />
         </activity>
         <activity
-            android:name=".StyleDetailActivity"
+            android:name=".main.style.StyleDetailActivity"
             android:label="@string/title_activity_style_detail"
-            android:parentActivityName=".StyleListActivity" >
+            android:parentActivityName=".main.style.StyleListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="gunn.brewski.app.StyleListActivity" />
+                android:value=".main.style.StyleListActivity" />
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".main.settings.SettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName=".DashboardActivity" >
+            android:parentActivityName=".main.dashboard.DashboardActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="gunn.brewski.app.DashboardActivity" />
+                android:value=".main.dashboard.DashboardActivity" />
         </activity>
 
         <provider
